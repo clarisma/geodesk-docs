@@ -1,85 +1,34 @@
-<p align="right">
-    <a href="https://badge.fury.io/rb/just-the-docs"><img src="https://badge.fury.io/rb/just-the-docs.svg" alt="Gem version"></a> <a href="https://github.com/just-the-docs/just-the-docs/actions?query=workflow%3A%22main+branch+CI%22"><img src="https://github.com/just-the-docs/just-the-docs/workflows/main%20branch%20CI/badge.svg" alt="Build status"></a>
-</p>
-<br><br>
-<p align="center">
-    <h1 align="center">Just the Docs</h1>
-    <p align="center">A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.<br>Easily hosted on GitHub Pages with few dependencies.</p>
-    <p align="center"><strong><a href="https://just-the-docs.github.io/just-the-docs/">See it in action!</a></strong></p>
-    <br><br><br>
-</p>
+# GeoDesk
 
-![jtd](https://user-images.githubusercontent.com/896475/47384541-89053c80-d6d5-11e8-98dc-dba16e192de9.gif)
+<img src="img/logo2.png">
 
-## Installation
+GeoDesk is a fast and storage-efficient geospatial database for OpenStreetMap data.
 
-### via GitHub Pages remote theme
+## Why GeoDesk?
 
-The quickiest way to use Just The Docs is to use GitHub pages [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/) feature in your `config.yml` file:
+- **Small storage footprint** --- GeoDesk's GOL files are only 20% to 50% larger than the original OSM data in PBF format -- that's less than a tenth of the storage consumed by a traditional SQL-based database.
 
-```yaml
-remote_theme: just-the-docs/just-the-docs
-```
-### via RubyGems:
+- **Fast queries** --- typically 50 times faster than SQL. 
 
-Alternatively you can install it as a Ruby Gem.
+- **Fast to get started** --- Converting `.osm.pbf` data to a GOL is 20 times faster than an import into an SQL database. Alternatively, download pre-made data tiles for the just the regions you need and automatically assemble them into a GOL.
 
-Add this line to your Jekyll site's Gemfile:
+- **Intuitive API** --- No need for object-relational mapping, GeoDesk queries return `Node`, `Way` and `Relation` objects.
+ 
+- **Proper handling of relations** --- Traditional geospatial databases deal with geometric shapes and require workarounds to support this unique and powerful aspect of OSM data.
 
-```ruby
-gem "just-the-docs"
-```
+- **Seamless integration with the Java Topolgy Suite (JTS)** for advanced geometric operations, such as buffer, union, simplify, convex and concave hulls, Voronoi diagrams, and much more.
 
-And add this line to your Jekyll site's `_config.yml`:
+- **Modest hardware requirements** --- If it can run a 64-bit JVM, it'll run GeoDesk.
+ 
+## Get started
 
-```yaml
-theme: just-the-docs
+Include this dependency in your project's `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.geodesk</groupId>
+    <artifactId>geodesk</artifactId>
+    <version>0.1.0</version>
+</dependency>
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install just-the-docs
-
-Alternatively, you can run it inside Docker while developing your site
-
-    $ docker-compose up
-
-## Usage
-
-[View the documentation](https://just-the-docs.github.io/just-the-docs/) for usage information.
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/just-the-docs/just-the-docs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-### Submitting code changes:
-
-- Open a [Pull Request](https://github.com/just-the-docs/just-the-docs/pulls)
-- Ensure all CI tests pass
-- Await code review
-- Bump the version number in `just-the-docs.gemspec` and `package.json` according to [semantic versioning](https://semver.org/).
-
-### Design and development principles of this theme:
-
-1. As few dependencies as possible
-2. No build script needed
-3. First class mobile experience
-4. Make the content shine
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-A modern [devcontainer configuration](https://code.visualstudio.com/docs/remote/containers) for VSCode is included.
-
-Your theme is set up just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When the theme is released, only the files in `_layouts`, `_includes`, and `_sass` tracked with Git will be released.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
