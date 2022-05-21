@@ -1,6 +1,6 @@
 # GeoDesk
 
-<img src="https://docs.geodesk.com/img/logo2.png">
+<img src="https://docs.geodesk.com/logo2.png">
 
 GeoDesk is a fast and storage-efficient geospatial database for OpenStreetMap data.
 
