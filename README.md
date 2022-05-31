@@ -1,5 +1,3 @@
-# GeoDesk
-
 <img src="https://docs.geodesk.com/logo2.png">
 
 GeoDesk is a fast and storage-efficient geospatial database for OpenStreetMap data.
@@ -10,7 +8,7 @@ GeoDesk is a fast and storage-efficient geospatial database for OpenStreetMap da
 
 - **Fast queries** &mdash; typically 50 times faster than SQL. 
 
-- **Fast to get started** &mdash; Converting `.osm.pbf` data to a GOL is 20 times faster than an import into an SQL database. Alternatively, download pre-made data tiles for the just the regions you need and automatically assemble them into a GOL.
+- **Fast to get started** &mdash; Converting `.osm.pbf` data to a GOL is 20 times faster than an import into an SQL database. Alternatively, download pre-made data tiles for just the regions you need and automatically assemble them into a GOL.
 
 - **Intuitive API** &mdash; No need for object-relational mapping, GeoDesk queries return `Node`, `Way` and `Relation` objects.
  
@@ -32,3 +30,24 @@ Include this dependency in your project's `pom.xml`:
 </dependency>
 ```
 
+```java
+import com.geodesk.feature.*;
+import com.geodesk.util.*;
+
+public class PubsExample
+{
+    public public static void main(String[] args)
+    {
+        FeatureLibrary library = new FeatureLibrary(
+            "example.gol",                              // ❶
+            "data.geodesk.com/switzerland");            // ❷
+        
+        for(Feature pub: library
+            .select("na[amenity=pub]")
+            .in(Box.ofWSEN(8.53,47.36,8.55,47.38)))
+        {
+            System.out.println(pub.stringValue("name"));
+        }
+    }
+}
+```

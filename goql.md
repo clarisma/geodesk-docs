@@ -83,14 +83,14 @@ To select all element types, use the wildcard `*`.
 
 To further constrain features, add one or more **tag clauses**, which function like CSS attribute selectors:
 
-```
+```css
 na[amenity=restaurant]
 ```
 
 The above selects all nodes and areas that have an `amenity` tag whose value is `restaurant`. If multiple tag clauses are specified, the feature must fulfill *all* of
 them. For example, this query finds all sushi restaurants that offer takeaway and have a website:
 
-```
+```css
 na[amenity=restaurant][cusine=sushi][takeaway][website]
 ```
 
@@ -98,19 +98,19 @@ Tag clauses may appear in any order.
 
 A **unary tag clause** tests for presence of a tag (whose value must not be `no`). Prepend it with `!` to negate it. For example, to find residential streets that are *not* one-way:
 
-```
+```css
 w[highway=residential][!oneway]
 ```
 
 **Strings** that contain characters other than letters, numbers or underscores must be quoted (matching single or double quotes):
 
-```
+```css
 na[amenity=pub][name="The King's Head"]
 ```
 
 For **partial string matches**, use the wildcard `*`:
 
-```
+```css
 na[name=The*]       // "The Best", "Theater"
 na[name="The *"]    // "The Best"
 na[name=*land]      // "bland", "New Zealand"
@@ -121,7 +121,7 @@ String matching is always **case-sensitive**.
 
 For more sophisticated string matching, use **regular expressions** (using the operator `~` or `!~`):
 
-```
+```css
 na[name~".[Ee]at."]      
 ```
 
@@ -130,13 +130,13 @@ TODO: more RegEx examples
 
 A query can contain **multiple selectors**, separated by commas:
 
-```
+```css
 na[amenity=restaurant], na[amenity=pub], na[amenity=cafe]
 ```
 
 The above can be simplified by specifying **multiple values** in a single tag clause:
 
-```
+```css
 na[amenity=restaurant,pub,cafe]
 ```
 
@@ -144,13 +144,13 @@ na[amenity=restaurant,pub,cafe]
 
 Queries that select all types and contain a single tag clause can be written in **simplified form**, omitting the type identifiers and the square brackets:
 
-```
+```css
 highway=primary
 ```
 
 is equivalent to
 
-```
+```css
 *[highway=primary]
 ```
 

@@ -12,6 +12,8 @@ div.class
     color: black;
     border-bottom-left-radius: 6px;
     // border-top-right-radius: 6px;
+    -webkit-box-shadow: 3px 3px 12px 4px #c6c6c6;
+    box-shadow: 3px 3px 12px 4px #c6c6c6;
 }
 
 div.class.root
@@ -28,4 +30,31 @@ div.class.leaf
 {
     font-size: 12px;
     color: #333333;
+}
+
+@media print
+{
+    body, .side-bar
+    {
+        background-color: #ffffff;
+    }
+}
+
+
+code
+{
+    font-size: 1em;
+    // background-color: rgba(0,0,0,.05);
+}
+
+h1 code, h2 code, h3 code
+{
+    background-color: inherit;
+    border: none;
+}
+
+table code, pre code
+{
+    background-color: inherit;
+    border: none;
 }
