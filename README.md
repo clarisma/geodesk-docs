@@ -38,16 +38,38 @@ public class PubsExample
 {
     public public static void main(String[] args)
     {
-        FeatureLibrary library = new FeatureLibrary(
-            "example.gol",                              // ❶
-            "data.geodesk.com/switzerland");            // ❷
+        FeatureLibrary library = new FeatureLibrary(     // 1    
+            "example.gol",                               // 2
+            "https://data.geodesk.com/switzerland");     // 3
         
-        for(Feature pub: library
-            .select("na[amenity=pub]")
-            .in(Box.ofWSEN(8.53,47.36,8.55,47.38)))
+        for(Feature pub: library                         // 4
+            .select("na[amenity=pub]")                   // 5
+            .in(Box.ofWSEN(8.53,47.36,8.55,47.38)))      // 6
         {
-            System.out.println(pub.stringValue("name"));
+            System.out.println(pub.stringValue("name")); // 7
         }
+        
+        library.close();                                 // 8
     }
 }
 ```
+
+What's going on here?
+
+1. We're opening a feature library ...
+
+2. ... with the file name `example.gol` (If it doens't exist, a blank one is created)
+
+3. ... and a URL from which data tiles will be downloaded
+
+4. We iterate through all the features ...
+
+5. ... that are pubs ([query language](https://docs.geodesk.com/goql))
+
+6. ... in downtown Zurich (bounding box with West/South/East/North coordinates)
+
+7. We print the name of each pub
+
+8. We close the library.
+
+That's it, you've created your first GeoDesk application! 
