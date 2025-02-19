@@ -34,7 +34,8 @@ If you are using **CMake**, include GeoDesk via `FetchContent`:
 ```cmake
 include(FetchContent)
 FetchContent_Declare(geodesk GIT_REPOSITORY 
-    https://github.com/clarisma/libgeodesk.git)
+    https://github.com/clarisma/libgeodesk.git
+    GIT_TAG main)
 FetchContent_MakeAvailable(geodesk)
 ```
 
