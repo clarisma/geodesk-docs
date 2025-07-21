@@ -26,6 +26,10 @@ A better alternative may be using a [mirror](https://wiki.openstreetmap.org/wiki
 
 If you are looking for regional or country-sized subsets, [GeoFabrik](https://download.geofabrik.de/) offers a large selection of datasets (updated daily).
 
+<blockquote class="note" markdown="1">
+Need the whole world? [OpenPlanetData.com](https://openplanetdata.com) publishes the full planet as a ready-to-use GOL (about 100 GB; updated daily).
+</blockquote>
+
 ## Hardware Requirements
 
 Building a library is a resource-intense operation. To build a GOL that contains the worldwide OpenStreetMap dataset, you should have a machine with at least 8 physical cores and 24 GB of RAM, or the build process may take multiple hours. 
@@ -36,9 +40,6 @@ Your drive should have free space equal to at least three times the size of the 
 
 The resulting GOL itself will only be 30% to 50% larger than the planet file (The additional storage is needed to accommodate temporary files).
 
-<div class="box note" markdown="1">
-An alternative to building a GOL is downloading a GeoDesk tile set (via the [`load`](load) command). This is much faster and requires only minimal hardware.
-</div>
 
 ## Options
 

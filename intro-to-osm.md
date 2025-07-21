@@ -72,4 +72,6 @@ Every week, the OpenStreetMap project publishes a [complete copy](https://planet
 
 There are also multiple services that provide smaller extracts, both for various countries and regions, as well as custom areas.  
 
+The full planet is also available for download as a pre-built GOL (GeoDesk's native file format) on [OpenPlanetData.com](https://openplanetdata.com) (updated daily).
+
 So, what do you do with all this data? This is where GeoDesk comes in!
