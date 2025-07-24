@@ -142,6 +142,54 @@ A `QueryError` is raised if the set is empty.
 first_node = way.nodes[0]
 ```
 
+## Retrieving features by ID
+
+<blockquote class="note" markdown="1">
+GOLs currently don't index features by their ID, so ID-based lookups can be very slow, especially for large datasets. To mitigate this, constrain the set to the bounding box where the feature is expected to be located. Even merely limiting the query to a city-sized area will bring its latency to well below 1 ms. 
+
+Query performance further improves by combining it with a tag clause for an indexed key. For example, if a requested node represents a shop, pre-filter the set with a `[shop]` query. Use [`gol info`](/gol/info) or [`indexed_keys`](#Features_indexed_keys) to determine which keys are indexed.
+</blockquote>
+
+```python
+eiffel_tour = world.way(5013364)        # very slow, avoid
+paris = Box(2.2,48.8,2.5,48.9)
+eiffel_tour = world(paris).way(5013364) # Takes < 1 ms
+eiffel_tour = world(paris)("a[tourism]").way(5013364) 
+    # even faster (assuming "tourism" key is indexed)
+```
+
+> .method node(*id*)
+
+Retrieves the node with the given ID (or `None`).
+
+*Since 1.2*
+
+> .method way(*id*)
+
+Retrieves the way with the given ID (or `None`).
+
+If you know whether the way represents a linestring or an area, you can speed up the query by restricting it with `w` or `a`:
+
+```python
+way = features('w').way(123)      # for a lineal way
+way = features('a').way(123)      # for an area
+```
+
+*Since 1.2*
+
+> .method relation(*id*)
+
+Retrieves the relation with the given ID (or `None`).
+
+If you know whether the relation represents a (multi)polygon or a "proper" relation (route, turn restriction, etc.), you can speed up the query by restricting it with `a` or `r`:
+
+```python
+rel = features('a').relation(123)      # for an area relation
+rel = features('r').relation(123)      # for any other type
+```
+
+*Since 1.2*
+
 ## Testing for membership
 
 To check if a feature belongs to a given set, use the `in` operator:
@@ -406,3 +454,9 @@ The URL where the text of the license can be found.
 > .property tiles
 
 {%endcomment%}
+
+## Metadata
+
+> .property indexed_keys
+
+A list of strings that represent the keys for which indexing is enabled. [GOQL queries](/goql) that use at least one indexed key may execute significantly faster. 
