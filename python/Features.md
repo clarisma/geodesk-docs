@@ -152,10 +152,10 @@ Query performance further improves by combining it with a tag clause for an inde
 </blockquote>
 
 ```python
-eiffel_tour = world.way(5013364)        # very slow, avoid
+eiffel_tower = world.way(5013364)        # very slow, avoid
 paris = Box(w=2.2, s=48.8, e=2.5, n=48.9)
-eiffel_tour = world(paris).way(5013364) # Takes < 1 ms
-eiffel_tour = world(paris)("a[tourism]").way(5013364)
+eiffel_tower = world(paris).way(5013364) # Takes < 1 ms
+eiffel_tower = world(paris)("a[tourism]").way(5013364)
     # even faster (assuming "tourism" key is indexed)
 ```
 
