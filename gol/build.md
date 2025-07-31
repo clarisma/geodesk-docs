@@ -76,6 +76,8 @@ See build setting [updatabale](#updatable).
 
 ## Build Settings
 
+{% comment %}
+
 ### `area-tags`  ~~0.2~~ {#area-tags}
 
 The tags that determine whether a closed OSM way is treated as an area or a linear ring. Rules can be specified for one or more keys. A closed way is treated as an area if it fulfills at least one of these rules (or is explicitly tagged `area=yes`), and is *not* tagged `area=no`.
@@ -110,6 +112,7 @@ If enabled, instructs the `build` command to retain the external ID indexes used
 
 In case this option is disabled, the [`update`](/gol/update) command can also re-create these indexes if needed.
 
+{% endcomment %}
 
 ### `indexed-keys`
 
@@ -117,14 +120,16 @@ To enhance query performance, GOLs organize features into separate indexes based
 
 Keys that should always be placed into the same index can be specified as *key-pairs* by placing forward slashes between these keys (useful for rare-but-similar categories like `telecom`/`communication`).
 
+{% comment %}
 Place an exclamation mark (`!`) after a key or key-pair to indicate keys that should be considered more important (i.e. more likely to be queried) than others. Likewise, mark entries with a question mark (`?`) to lower their importance. ~~0.2~~
+{% endcomment %}
 
 Example:
 
 ```
 indexed-keys:
   amenity
-  building?
+  building
   highway
   natural/geological
   shop
@@ -257,6 +262,8 @@ The zoom levels at which tile-tree nodes should be created. Together with [`max-
 - Fewer zoom levels result in a flatter tree that may yield better query performance, but cause a higher variance in tile sizes.
 - Setting the top zoom level too low may cause the maximum tile size (1 GB uncompressed) to be exceeded. (Very large tiles may also cause the build process to run out of memory.)
 
+{% comment %}
+
 ### `updatable` ~~0.3~~ {#updatable}
 
 Value: `yes` / `no` (default)
@@ -267,3 +274,4 @@ For GOLs built from a planet-wide dataset, it is highly recommended to also enab
 
 If you no longer need to update a GOL, you can delete its external indexes and recover the storage. If you delete the ID indexes (or disable `id-indexing` during the initial build), you can later re-create them with the [`--index`](../_drafts/update.md#option-index) option of the [`update`](../_drafts/update.md) command. However, deleting the way-node indexes permanently disables updating of the GOL, as these indexes cannot be re-created (You would then need to run the `build` command again to build a new updatable GOL).
 
+{% endcomment %}

@@ -69,6 +69,7 @@ match the original OSM data (*You can open these XML files in JOSM, but please d
 
 Formatting options to customize the output. These are primarily used by [`map`](/gol/query/map) and [`stats`](/gol/query/stats). Common options are documented below:
 
+{% comment %}
 ### <code>-f:id=<em>&lt;STYLE&gt;</em></code> ~~0.2~~ {#option-f-id}
 
 Defines the style of IDs used for `csv`, `geojson`/`geojsonl`, `list` and `table`:
@@ -86,9 +87,13 @@ Keep in mind:
 - To avoid ID collisions, use a plain `$id` only if you are querying `n` *or* `w` *or* `r`.
 - Areas (`a`) can consist of both `way` and `relation` features, so the OSM type must be incorporated into the ID.
 
+{% endcomment %}
+
 ### <code>-f:max-width=<em>&lt;NUMBER&gt;</em></code> {#option-f-max-width}
 
 The maximum width (in characters) of the displayed table (used by [`stats`](/gol/query/stats) and `table`. Default: 100
+
+{% comment %}
 
 ### <code>-f:sort=<em>&lt;KEYS&gt;</em>|id</code> ~~0.2~~ {#option-f-sort}
 
@@ -100,9 +105,6 @@ Sorting may substantially increase memory consumption (and decrease performance)
 
 </blockquote>
 
-
-
-{% comment %}
 
 ### `--center=bbox|centroid|inside` ~~0.2~~
 

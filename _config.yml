@@ -176,7 +176,7 @@ compress_html:
   #   envs: all
 
 
-geodesk_version: 1.0.2
+geodesk_version: 1.1.0
 geodesk_python_version: 1.2.0
 javadoc: https://apidocs.geodesk.com/v1/com/geodesk/
 javadoc_jts: https://locationtech.github.io/jts/javadoc/org/locationtech/jts/
