@@ -117,6 +117,59 @@ Note that only the nodes of ways and members of relations are ordered collection
 all others are unordered sets, which means you'll receive a random feature if there
 are more than one. If the collection is empty, `first()` returns `null`.
 
+## Querying features by ID
+
+<blockquote class="note" markdown="1">
+GOLs currently don't index features by their ID, so ID-based lookups can be very slow, especially for large datasets. To mitigate this, constrain the set to the bounding box where the feature is expected to be located. Even merely limiting the query to a city-sized area will bring its latency to well below 1 ms. 
+
+Query performance further improves by combining it with a tag clause for an indexed key. For example, if a requested node represents a shop, pre-filter the set with a `[shop]` query. Use [`gol info`](/gol/info) to determine which keys are indexed.
+</blockquote>
+
+```java
+Feature eiffelTower = world.way(5013364);        // very slow, avoid
+Box paris = Box.ofWSEN(2.2,48.8,2.5,48.9);
+eiffelTower = world.in(paris).way(5013364); // Takes < 1 ms
+eiffelTower = world.in(paris).select("a[tourism]").way(5013364); 
+    // even faster (assuming "tourism" key is indexed)
+```
+
+### node
+
+Returns the node with the given ID (or `null`).
+
+```java
+node = features.node(123);
+```
+
+*Since 1.1*
+
+### way
+
+Returns the way with the given ID (or `null`).
+
+If you know whether the way represents a linestring or an area, you can speed up the query by restricting it with `w` or `a`:
+
+```java
+way = features.select("w").way(123);   // for a lineal way
+way = features.select("a").way(123);   // for an area
+```
+
+*Since 1.1*
+
+### relation
+
+Returns the relation with the given ID (or `null`).
+
+If you know whether the relation represents a (multi)polygon or a "proper" relation (route, turn restriction, etc.), you can speed up the query by restricting it with `a` or `r`:
+
+```java
+rel = features.select("a").relation(123);   // for an area relation
+rel = features.select("r").relation(123);   // for any other type
+```
+
+*Since 1.1*
+
+
 ## Spatial filters
 
 Features can be filtered by their spatial relationship to other geometric objects (typically a `Geometry`, `PreparedGeometry` or another `Feature`). 
