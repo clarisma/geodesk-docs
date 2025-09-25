@@ -2,19 +2,19 @@
 id: build
 layout: default
 title: build
-parent: GOL Tool
+parent: GOL Utility
 nav-order: 0
 ---
 
-# `gol build`
 
-Creates a new Geo-Object Library from an OpenStreetMap data file.
+
+Creates a new feature library from an OpenStreetMap data file.
 
 Usage:
 
     gol build [<options>] <gol-file> <source-file>
 
-`<gol-file>` is the name of the Library to build. If no extension is given, `.gol` will be added.
+`<gol-file>` is the name of the library to build. If no extension is given, `.gol` will be added.
 
 `<source-file>` is the file that contains the OpenStreetMap data. Currently, only files in [OSM-PBF format](https://wiki.openstreetmap.org/wiki/PBF_Format) are supported. This format is popular due to its compact size and wide tool support.
 
@@ -43,15 +43,22 @@ The resulting GOL itself will only be 30% to 50% larger than the planet file (Th
 
 ## Options
 
-### <code>--areas</code> <code><em>&lt;RULES&gt;</em></code> {#option-areas}
+<h3 id="option_areas"><code>--areas</code></h3><div markdown="1">
+
+**Hello**
+<b>Hello 2</b>
+<bozo>Test C</bozo>
+<span>Test A</span>
 
 The tags that determine whether a closed OSM way is treated as an area or a linear ring. Rules can be specified for one or more keys. A closed way is treated as an area if it fulfills at least one of these rules (or is explicitly tagged `area=yes`), and is *not* tagged `area=no`.
+
+<div>Test B</div>
 
 Key rules have the following format:
 
 <div class="language-plaintext highlighter-rouge">
 <div class="highlight">
-<pre class="highlight"><code><i>key</i> [ <b>(</b> [ <b>except</b> ] <i>value</i>+ <b>)</b> ]
+<pre class="highlight"><code><i>key</i> [ <b>(</b> <b>only</b>|<b>except</b> <i>value</i>+ <b>)</b> ]
 </code></pre>
 </div>
 </div>
@@ -63,15 +70,15 @@ Example:
 
 
 ```
---areas "building, barrier (city_wall, ditch),  man_made (except embankment)   
+--areas "building, barrier (only city_wall, ditch),  man_made (except embankment)   
 ```
 
-The above will cause any closed way tagged `building` (except `building=no`), `barrier=city_wall`, `barrier=ditch` or `man_made` (except `man_made=embankment` or `man_made=no`) to be treated as an area.  
+The above will cause any closed way tagged `building` (except `building=no`), `barrier=city_wall`, `barrier=ditch` or `man_made` (except `man_made=embankment` or `man_made=no`) to be treated as an area.
 
+</div>
+<h3 id="option_levels"><code>-l</code>, <code>--levels</code> <var>&lt;list&gt;</var></h3><div markdown="1">
 
-### `-l`, `--levels` <code><em>&lt;LIST&gt;</em></code> {#option-levels}
-
-The zoom levels at which tile-tree nodes should be created. Together with [`--max-tiles`](#option-max-tiles) and [`--min-tile-density`](#option-min-tile-density), this setting shapes the tile structure of a GOL.
+The zoom levels at which tile-tree nodes should be created. Together with [`max-tiles`](#max-tiles) and [`min-tile-density`](#min-tile-density), this setting shapes the tile structure of a GOL.
 
 - Zoom levels must be between 0 and 12.
 - The difference between zoom levels must not exceed 3 (e.g. you can specify `0,3,6,9`, but not `0,4,6,12`).
@@ -79,7 +86,8 @@ The zoom levels at which tile-tree nodes should be created. Together with [`--ma
 - Fewer zoom levels result in a flatter tree that may yield better query performance, but cause a higher variance in tile sizes.
 - Setting the top zoom level too low may cause the maximum tile size (1 GB uncompressed) to be exceeded. (Very large tiles may also cause the build process to run out of memory.)
 
-### `-m`, `--max-tiles` <code><em>&lt;NUMBER&gt;</em></code> {#option-max-tiles}
+</div>
+<h3 id="option_max-tiles"><code>-m</code>, <code>--max-tiles</code> <var>&lt;number&gt;</var></h3><div markdown="1">
 
 Value: 1 -- 8,000,000 (default: 65,535)
 
@@ -89,8 +97,8 @@ A higher setting is also preferred if you intend to host a tile repository, as a
 
 If this number is set too low, a tile may exceed the maximum size of 1 GB (uncompressed). An unreasonably low setting may also cause the build process to fail with an `OutOfMemoryError`.
 
-
-### `--max-strings` <code><em>&lt;NUMBER&gt;</em></code> {#option-max-strings}
+</div>
+<h3 id="option_max-strings"><code>--max-strings</code> <var>&lt;number&gt;</var></h3><div markdown="1">
 
 Value: 256 -- 65,535 (default: 16,384)
 
@@ -98,6 +106,8 @@ The maximum number of strings that will be stored in the GOL's Global String Tab
 
 The actual number of strings will be less if fewer strings meet the minimum usage threshold ([`--min-string-usage`](#option-min-string-usage))
 
+</div>
+<h3 id="option_min-string-usage"><code>--min-string-usage</code> <var>&lt;number&gt;</var></h3><div markdown="1">
 
 ### `--min-string-usage` <code><em>&lt;NUMBER&gt;</em></code> {#option-min-string-usage}
 
@@ -107,6 +117,8 @@ Specifies the minimum number of times a string must be used by features (as a ta
 
 See [`--max-strings`](#option-max-strings).
 
+</div>
+<h3 id="option_min-tile-density"><code>-n</code>, <code>--min-tile-density</code> <var>&lt;number&gt;</var></h3><div markdown="1">
 
 ### `-n`, `--min-tile-density` <code><em>&lt;NUMBER&gt;</em></code> {#option-min-tile-density}
 
@@ -114,6 +126,7 @@ Value: 1 -- 10,000,000 (default: 75,000)
 
 If there are fewer nodes in a tile area than this number, the tile will be omitted, and all features in the tile area will be placed into tiles at lower zoom levels. A lower threshold will result in more tiles, up to the maximum specified by [`--max-tiles`](#option-max-tiles).
 
+</div>
 
 ### `-r`, `--rtree-branch-size` <code><em>&lt;NUMBER&gt;</em></code> {#option-rtree-branch-size}
 
@@ -134,3 +147,99 @@ Enables incremental updates to the GOL file (using the [`update`](update.md) com
 
 {% include gol/option-verbose.md %}
 
+## Build Settings
+
+{% comment %}
+
+### `area-tags`  ~~0.2~~ {#area-tags}
+
+The tags that determine whether a closed OSM way is treated as an area or a linear ring. Rules can be specified for one or more keys. A closed way is treated as an area if it fulfills at least one of these rules (or is explicitly tagged `area=yes`), and is *not* tagged `area=no`.
+
+Key rules have the following format:
+
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code><i>key</i> [ <b>(</b> <b>only</b>|<b>except</b> <i>value</i>+ <b>)</b> ]
+</code></pre>
+</div>
+</div>
+
+
+Multiple key rules and values must be separated by whitespace and/or commas.
+
+Example:
+
+
+### `id-indexing` ~~0.3~~ {#id-indexing}
+
+Value: `yes` / `no` (defaults to value of [`updatable`](#updatable))
+
+If enabled, instructs the `build` command to retain the external ID indexes used during building, so incremental updates can be processed faster (`updatable` must be enabled).
+
+In case this option is disabled, the [`update`](/gol/update) command can also re-create these indexes if needed.
+
+{% endcomment %}
+
+### `indexed-keys`
+
+To enhance query performance, GOLs organize features into separate indexes based on their tags. The `index-keys` section specifies which keys should be considered for indexing. The ideal keys for indexing are those that create categories of features (similar to *layers* in a traditional GIS database), such as `highway`, `landuse` or `shop`. As the number of indexes is limited (see [`max-key-indexes`](#max-key-indexes)), multiple keys may be consolidated into one index (This is done automatically on a per-type, per-tile basis). Features whose tags have multiple indexed keys (e.g. `tourism` and `amenity` for a hotel that is also a restaurant) are consolidated with features with the same key, or placed into a separate mixed-key index.
+
+Keys that should always be placed into the same index can be specified as *key-pairs* by placing forward slashes between these keys (useful for rare-but-similar categories like `telecom`/`communication`).
+
+Example:
+
+```
+indexed-keys:
+  amenity
+  building
+  highway
+  natural/geological
+  shop
+```
+
+### `key-index-min-features`
+
+Value: 0 -- 1,000,000 (default: 300)
+
+If there are fewer features in a key index than this number, these features will be consolidated into another index.
+
+Used with [`indexed-keys`](#indexed-keys) and [`max-key-indexes`](#max-key-indexes).
+
+
+### `max-key-indexes`
+
+Value: 0 -- 30 (default: 8)
+
+The maximum number of key-based indexes to create, per feature type (*node*, *way*, *area*, *relation*). A higher number boosts the performance of queries that make use of indexed keys (queries that require the presence of a key/tag). However, a higher number of key indexes may reduce the performance of queries not based on indexed keys. Key indexes are very storage-efficient, so specifying a higher number has a minimal impact on file size.
+
+If the number of key indexes is lower than the number of keys and key-pairs in [`indexed-keys`](#indexed-keys), features with less frequent keys will be consolidated in one or more combined indexes. Index consolidation also happens if the number of features in an index is below [`key-index-min-features`](#key-index-min-features)
+
+Specifying `0` disables key indexing.
+
+
+### `properties`
+
+A section with key-value pairs that are stored as GOL metadata, which are displayed by [`gol info`](/gol/info) and can be read by other applications.
+
+Common properties include:
+
+`generator`   | The program used to create the GOL ("geodesk/gol {{ site.geodesk_version }}")
+`copyright`   | Text indicating the copyright holder of the data ("OpenStreetMap contributors")
+`license`     | The license under which the data is distributed ("Open Database License 1.0")
+`license-url` | Link to the website where the license text can be found ("https://opendatacommons.org/licenses/odbl/1-0/")
+`tileset-url` | The default URL from which tiles can be downloaded or updated (e.g. "https://data.geodesk/world")
+
+<blockquote class="important" markdown="1">
+
+If you wish to distribute tilesets based on OpenStreetMap data, you must do so in accordance
+with the [Open Database License](https://opendatacommons.org/licenses/odbl/1-0/). You can
+use the `build` command to create a GOL from any geodata in OSM-PBF format, so in theory,
+GOLs could contain data from non-OSM sources (or very old OSM datasets distributed under a
+Creative Commons License) -- but in general, you should not override the defaults for
+`copyright`, `license` and `license_url`.
+
+</blockquote>
+
+To set properties from the command line, use <code>--property:<i>property</i>=<i>value</i></code> or <code>-p:<i>property</i>=<i>value</i></code>.
+
+</source-file></gol-file></source-file></gol-file></options>

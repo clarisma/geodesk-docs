@@ -1,11 +1,11 @@
 ---
 layout: default
 title: help
-parent: GOL Utility
+parent: GOL Tool
 nav-order: 3
 ---
 
-# `help`
+# `gol help`
 
 Displays documentation for general usage or for a specific command.
 

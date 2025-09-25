@@ -1,14 +1,13 @@
 ---
 layout: default
 title: info
-parent: GOL Utility
+parent: GOL Tool
 nav-order: 4
 ---
 
-# `info`
+# `gol info`
 
-Provides general statistics about a library. If a bounding box or polygon are specified,
-this command provides additional statistics about that area.
+Provides general statistics about a library. If a bounding box or polygon are specified, this command provides additional statistics about that area.
 
 Usage:
 
@@ -29,7 +28,6 @@ Provides a detailed analysis of the library's indexes.
 
 *For a large (planet-size) library, this option may require several minutes to execute.* 
 
-{% include gol/option-new.md %}
 {% include gol/option-output.md %}
 {% include gol/option-quiet.md %}
 {% include gol/option-silent.md %}
@@ -39,6 +37,5 @@ Provides a detailed analysis of the library's indexes.
 Displays statistics about the tiles.
 
 
-{% include gol/option-url.md %}
 {% include gol/option-verbose.md %}
 {% include gol/option-wait.md %}

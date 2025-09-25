@@ -3,7 +3,7 @@ layout: default
 title: GeoDesk for Python
 has_children: true
 has_toc: false
-nav_order: 6
+nav_order: 7
 permalink: /python
 twitter_card_type: summary_large_image
 image: /img/social-card3c.png

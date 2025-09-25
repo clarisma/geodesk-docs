@@ -1,18 +1,17 @@
 ---
 layout: default
-title: GOL Utility
+title: GOL Tool
 has_children: true
 has_toc: false
-nav_order: 8
+nav_order: 5
 permalink: /gol
 ---
 
-# The `gol` Command Line Utility
+# The GOL Tool
 
-The `gol` ("Geo-Object Librarian") command-line utility allows you to build, manage and
-query [feature libraries](/libraries).
+The `gol` ("Geo-Object Librarian") command-line utility allows you to build, manage, and query [Geo-Object Libraries](/libraries) and Bundles.
 
-Usage:
+Most commands follow this form:
 
     gol <command> <gol-file> [<arguments>] [<options>]
 
@@ -26,7 +25,7 @@ Usage:
 [`build`](/gol/build)
 </td>
 <td markdown="1">
-Creates a feature library from OpenStreetMap data.
+Create a Geo-Object Library from OpenStreetMap data.
 </td>
 </tr>
 
@@ -35,7 +34,7 @@ Creates a feature library from OpenStreetMap data.
 [`check`](/gol/check)
 </td>
 <td markdown="1">
-Verifies the library's integrity.
+Verifies a Library's integrity.
 </td>
 </tr>
 
@@ -45,7 +44,7 @@ Verifies the library's integrity.
 [`copy`](/gol/copy)
 </td>
 <td markdown="1">
-Copies tiles between libraries.
+Copy tiles between Libraries or Bundles.
 </td>
 </tr>
 -->
@@ -55,7 +54,7 @@ Copies tiles between libraries.
 [`help`](/gol/help)
 </td>
 <td markdown="1">
-Displays documentation.
+Display documentation.
 </td>
 </tr>
 
@@ -64,7 +63,7 @@ Displays documentation.
 [`info`](/gol/info)
 </td>
 <td markdown="1">
-Provides basic file statistics.
+Provide basic file statistics.
 </td>
 </tr>
 
@@ -73,7 +72,16 @@ Provides basic file statistics.
 [`load`](/gol/load)
 </td>
 <td markdown="1">
-Imports tiles for a specific area.
+Import tiles from a Bundle into a Library.
+</td>
+</tr>
+
+<tr>
+<td markdown="1">
+[`map`](/gol/map)
+</td>
+<td markdown="1">
+Display features on a map.
 </td>
 </tr>
 
@@ -82,7 +90,7 @@ Imports tiles for a specific area.
 [`query`](/gol/query)
 </td>
 <td markdown="1">
-Extracts features.
+Retrieve features.
 </td>
 </tr>
 
@@ -111,7 +119,7 @@ Removes tiles *outside* a specific area.
 [`save`](/gol/save)
 </td>
 <td markdown="1">
-Exports tiles.
+Writes tiles from a Library to a Bundle.
 </td>
 </tr>
 
@@ -128,21 +136,20 @@ Updates the library.
 
 </table>
 
-<!--
 <blockquote class="note" markdown="1">
-GeoDesk is in **Early Access**. Some commands and options are not yet available in Version {{ site.geodesk_version }}. ~~This~~ marks the targeted version.
+On Windows, progress bars may appear ragged. To fix this, switch the shell's font to Cascadia Mono (in `Properties`) or another font with broad Unicode support (such as [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) or [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)).
 </blockquote>
--->
 
 
 ## Common Options
 
+The following options are supported across most commands:
+
 {% include gol/option-area.md %}
 {% include gol/option-bbox.md %}
-{% include gol/option-new.md %}
 {% include gol/option-output.md %}
 {% include gol/option-quiet.md %}
-{% include gol/option-url.md %}
 {% include gol/option-silent.md %}
 {% include gol/option-verbose.md %}
 {% include gol/option-wait.md %}
+

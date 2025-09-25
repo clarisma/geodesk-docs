@@ -13,13 +13,13 @@ OpenStreetMap is a trademark of the OpenStreetMap Foundation, and is used with t
 GeoDesk is not endorsed by or affiliated with the OpenStreetMap Foundation.
 </p>
 
+- [GOL Command-Line Utility](/gol)
+
 - [Java Developer's Guide](/java)
 
 - [Python Developer's Guide](/python)
 
 - [C++ Developer's Guide](/cpp)
-
-- [GOL Command-Line Utility](/gol)
 
 {% comment %}
 [API Reference](api.md)

@@ -2,17 +2,15 @@
 id: query
 layout: default
 title: check
-parent: GOL Utility
+parent: GOL Tool
 nav-order: 1
 ---
 
-# `check`
+# `gol check`
 
-Verifies the integrity of a library.
+Verifies the integrity of a GOL.
 
-- Each `.gol` file maintains a rollback journal whenever it is modified, which enables it
-  to return to a consistent state after a process crashes or power is lost. If the 
-  `.journal` is moved or deleted, its corresponding library may become corrupt. 
+- Each `.gol` file maintains a rollback journal whenever it is modified, which enables it to return to a consistent state after a process crashes or power is lost. If the `.journal` is moved or deleted, its corresponding GOL may become corrupt. 
    
 
 Usage:

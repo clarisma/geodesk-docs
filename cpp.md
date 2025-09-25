@@ -3,7 +3,7 @@ layout: default
 title: GeoDesk for C++
 has_children: true
 has_toc: false
-nav_order: 7
+nav_order: 8
 permalink: /cpp
 twitter_card_type: summary_large_image
 image: /img/doc-header-cpp.png
