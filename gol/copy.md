@@ -9,6 +9,8 @@ nav-order: 2
 
 Copies tiles between Libraries and Bundles.
 
+{% include gol/dev.html %}
+
 Usage:
 
     gol copy <source> <target> [<options>]

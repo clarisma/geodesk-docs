@@ -346,3 +346,23 @@ div.highlight code
     padding-right: 0.5em;
     line-height: 1.4em;
 }
+
+.lifecycle
+{
+    border: 2px solid black;
+    background-color: white;
+    // font-size: 110%;
+    padding: 8px;
+    margin: 16px 0px 16px 0px;
+    min-height: 68px;
+}
+
+.lifecycle img
+{
+    display: inline-block;
+    float: left;
+    // padding-top: 0px;
+    margin-right: 12px;
+    vertical-align: middle;
+    width: 46px;
+}

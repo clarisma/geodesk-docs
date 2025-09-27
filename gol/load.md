@@ -9,6 +9,8 @@ nav-order: 5
 
 Imports tiles into a Geo-Object Library from a Geo-Object Bundle.
 
+{% include gol/dev.html %}
+
 Usage:
 
     gol load <gol-file> <gob-file> [<options>]

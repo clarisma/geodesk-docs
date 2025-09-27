@@ -9,6 +9,8 @@ nav-order: 9
 
 Saves tiles from a Geo-Object Library to a Geo-Object Bundle.
 
+{% include gol/dev.html %}
+
 Usage:
 
     gol save <gol-file> <gob-file> [<options>]
