@@ -63,7 +63,7 @@ Example:
 
 
 ```
---areas "building, barrier (city_wall, ditch),  man_made (except embankment)   
+--areas "building, barrier (city_wall, ditch), man_made (except embankment)"   
 ```
 
 The above will cause any closed way tagged `building` (except `building=no`), `barrier=city_wall`, `barrier=ditch` or `man_made` (except `man_made=embankment` or `man_made=no`) to be treated as an area.  
