@@ -5,11 +5,11 @@ parent: GOL Tool
 nav-order: 5
 ---
 
-# `gol load`  ~~2.1~~
+# `gol load`
 
 Imports tiles into a Geo-Object Library from a Geo-Object Bundle.
 
-{% include gol/dev.html %}
+{% include gol/lab.html %}
 
 Usage:
 
@@ -20,6 +20,8 @@ If no area is defined (via [`--area`](#option-area) or [`--bbox`](#option-bbox))
 The Library and the Bundle must have the same tileset ID.
 
 By default, the IDs of untagged nodes that don't belong to relations (i.e. nodes that merely define the geometry of ways) are omitted from the GOL, reducing its size. To include these IDs, use option [`--waynode-ids`](#option-waynode-ids).
+
+*Since 2.1*
 
 ## Options
 
