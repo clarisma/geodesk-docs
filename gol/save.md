@@ -5,11 +5,11 @@ parent: GOL Tool
 nav-order: 9
 ---
 
-# `save` ~~2.1~~
+# `save`
 
 Saves tiles from a Geo-Object Library to a Geo-Object Bundle.
 
-{% include gol/dev.html %}
+{% include gol/lab.html %}
 
 Usage:
 
@@ -19,6 +19,7 @@ If no area is defined (via [`--area`](#option-area) or [`--bbox`](#option-bbox))
 
 By default, the IDs of untagged nodes that don't belong to relations (i.e. nodes that merely define the geometry of ways) are not saved, resulting in a smaller GOB. To include these IDs, use option [`--waynode-ids`](#option-waynode-ids).
 
+*Since 2.1*
 
 ## Options
 
