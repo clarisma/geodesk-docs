@@ -263,16 +263,19 @@ relation.members[5].role = "side_stream"
 This script renames a misspelled `highway` key in a given region:
 
 ```python
+from geodesk import Features, Changes
 misspelled_key = "hihgway"  
 correct_key = "highway"
-region = ...
+
+world = Features("world.gol")
+region = ...    
 
 fixed = Changes()
 for feature in world(region)(f"[{misspelled_key}]"):
     tags = fixed[feature].tags
     tags[correct_key] = tags[misspelled_key]
     del tags[misspelled_key]
-fixes.validate()    
+fixed.validate()    
 fixed.save(f"{region.name}-fixes")
 ```
 
