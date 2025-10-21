@@ -6,7 +6,7 @@ nav_order: 3
 
 # Core Concepts
 
-The heart of GeoDesk is a spatial database engine, which stores OpenStreetMap data in a **Geographic Object Library** (GOL). You can create GOLs from `.osm.pbf` files using the `gol` command-line tool, or download **data tiles** from a **repository**.
+The heart of GeoDesk is a spatial database engine, which stores OpenStreetMap data in a **Geo-Object Library** (GOL). You can create GOLs from `.osm.pbf` files using the `gol` command-line tool, or download **data tiles** from a **repository**.
 
 <img class="figure" src="/img/gol-diagram.png" width=480>
 
