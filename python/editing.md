@@ -143,13 +143,30 @@ for parent in feature.parents:
 changes.delete(feature)
 ```
 
-</div><h3 id="Changes_validate" class="api"><span class="prefix">Changes.</span><span class="name">validate</span><span class="paren">(</span>url=<span class="default">"https://overpass-api.de/api/interpreter"</span><span class="paren">)</span></h3><div class="api" markdown="1">
+</div><h3 id="Changes_validate" class="api"><span class="prefix">Changes.</span><span class="name">validate</span><span class="paren">(</span>url=<span class="default">"https://overpass-api.de"</span><span class="paren">)</span></h3><div class="api" markdown="1">
+
+Checks the changes for conflicts via an Overpass query, and also assigns version numbers to the `ChangedFeature` objects. Any changes with possible conflicts are noted in `Changes.issues`.
+
 
 
 </div><h3 id="Changes_save" class="api"><span class="prefix">Changes.</span><span class="name">save</span><span class="paren">(</span><i>filename</i><span class="paren">)</span></h3><div class="api" markdown="1">
 
 Writes the change instructions to an `.osc` file (the file extension can be omitted from *filename*)
 
+</div>
+## Resolving Conflicts
+
+<h3 id="Changes_issues" class="api"><span class="prefix">Changes.</span><span class="name">issues</span></h3><div class="api" markdown="1">
+
+A `list` of all merge conflicts, in the form of a three-value tuple:
+
+- `"error"` or `"warning"`
+
+- the `ChangedFeature` to which the issue applies
+
+- a detailed message
+
+ Any `error` issue will prevent the changes from being submitted to the OpenStreetMap server).
 
 
 <a id="ChangedFeature"></a>
@@ -157,7 +174,7 @@ Writes the change instructions to an `.osc` file (the file extension can be omit
 </div>
 ## ChangedFeature Objects
 
-A `ChangedFeature` represents a feature tracked by a `Changes` object.
+A `ChangedFeature` represents a feature tracked by a `Changes` object. It is created by [`create()`](Changes_create), [`modify()`](Changes_modify), [`delete()`](Changes_delete) or via lookup (`[]`].
 
 <h3 id="ChangedFeature_id" class="api"><span class="prefix">ChangedFeature.</span><span class="name">id</span></h3><div class="api" markdown="1">
 
@@ -224,7 +241,7 @@ way.nodes[5].lat -= .0005
     # moves the node south
 ```
 
-Assigning a `Coordinate` or longitude/latitude tuple to a node changes its location, which affects the geometry of all ways to which this node belongs. To replace the node in the given way, without affecting the original node, assign a `Feature` or `ChangedFeature` object instead:
+Assigning a `Coordinate` or longitude/latitude tuple to a node changes its location, which affects the geometry of all ways to which this node belongs. To replace the node in the given way, without changing the original node, assign a `Feature` or `ChangedFeature` object instead:
 
 ```python
 way.nodes[12] = (8.17, 51.9)
@@ -249,8 +266,11 @@ relation.members[5].role = "side_stream"
 This script renames a misspelled `highway` key in a given region:
 
 ```python
+from geodesk import Features, Changes
 misspelled_key = "hihgway"
 correct_key = "highway"
+
+world = Features("world.gol")
 region = ...
 
 fixed = Changes()
@@ -258,7 +278,7 @@ for feature in world(region)(f"[{misspelled_key}]"):
     tags = fixed[feature].tags
     tags[correct_key] = tags[misspelled_key]
     del tags[misspelled_key]
-fixes.validate()
+fixed.validate()
 fixed.save(f"{region.name}-fixes")
 ```
 
