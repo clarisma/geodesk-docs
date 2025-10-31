@@ -25,13 +25,13 @@ $ pip install geodesk
 
 ## Install the GeoDesk GOL Tool
 
-[Download the GOL Tool](https://www.geodesk.com/download) and uncompress the ZIP file in a folder of your choice. You'll need Java: Any JRE will do, as long as it is version 16 or above (We recommend the [Adoptium OpenJDK](https://adoptium.net/)).
+[Download the GOL Tool](https://www.geodesk.com/download) and uncompress the ZIP file in a folder of your choice.
 
 ## Create a GOL
 
 ### Download OpenStreetMap Data
 
-A Geographic Object Library (GOL) contains OpenStreetMap data in the format for GeoDesk. You can create a GOL from any `.osm.pbf` file. We recommend starting with a single-country or state-sized extract. These can be downloaded from various sites such as [GeoFabrik](https://download.geofabrik.de/) or
+A Geo-Object Library (GOL) contains OpenStreetMap data in the format for GeoDesk. You can create a GOL from any `.osm.pbf` file. We recommend starting with a single-country or state-sized extract. These can be downloaded from various sites such as [GeoFabrik](https://download.geofabrik.de/) or
   [BBBike](https://download.bbbike.org/osm/planet/sub-planet-daily/).
 
 ### Run `gol build`
