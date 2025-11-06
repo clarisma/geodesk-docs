@@ -79,21 +79,21 @@ To create a route relation:
 ```python
 relation = changes.create([way1, (way2, "forward"), 
     (way3, "backward"), ...], 
-    type="route", route="bus", ref="51A" 
+    type="route", route="bus", ref="51A", 
     name="Forest Hill to Back Bay")
 ```
 
-If the list consists solely of nodes, `create()` always constructs a way. To obtain a relation, ensure that at least one item in the list is a tuple with a role (the role can simply be an empty string):
+If a list argument consists solely of nodes, `create()` always constructs a way. To obtain a relation, ensure that at least one item in the list is a tuple with a role (the role can simply be an empty string):
 
 ```python
-way = changes.create([node1, node2, node2], ...)
+way = changes.create([node1, node2, node3], ...)
 
-relation = changes.create([(node1,""), node2, node2], ...)
+relation = changes.create([(node1,""), node2, node3], ...)
 ```
 
-- If a `LineString` or `LinearRing` has more than 2,000 vertexes (the maximum node count for a way), `create()` constructs a relation with `type=multilinestring` with multiple ways.
+- If a `LineString` or `LinearRing` has more than 2,000 vertices (the maximum node count for a way), `create()` constructs a relation with `type=multilinestring` with multiple ways.
 
-- Likewise, if a simple `Polygon` exceeds 2,000 vertexes, it is created as a relation (`type=multipolygon`), with its shell split across multiple member ways.
+- Likewise, if a simple `Polygon` exceeds 2,000 vertices, it is created as a relation (`type=multipolygon`), with its shell split across multiple member ways.
 
 <blockquote class="note" markdown="1">
 
@@ -165,14 +165,16 @@ A `list` of all merge conflicts, in the form of a three-value tuple:
 
 - a detailed message
 
- Any `error` issue will prevent the changes from being submitted to the OpenStreetMap server).
+ Any `error` issue will prevent the changes from being submitted to the OpenStreetMap server.
 
+// TODO: If merge conflict, need a way to pass the current version so caller
+//  can decide how to merge
 
 > .class ChangedFeature
  
 ## ChangedFeature Objects
 
-A `ChangedFeature` represents a feature tracked by a `Changes` object. It is created by [`create()`](Changes_create), [`modify()`](Changes_modify), [`delete()`](Changes_delete) or via lookup (`[]`].   
+A `ChangedFeature` represents a feature tracked by a `Changes` object. It is created by [`create()`](Changes_create), [`modify()`](Changes_modify), [`delete()`](Changes_delete) or via lookup (`[]`).   
 
 > .property id
  
@@ -212,6 +214,10 @@ The nodes of a way (as a `list` of `ChangedFeature` objects), or `None` for a no
  
 The members of a relation (as a `list` of `ChangedFeature` objects), or `None` for a node or way.
 
+> .property role
+
+The role of the feature in a relation (or `None` if it is not a relation member).
+
 
 ## Modifying the nodes of a way
 
@@ -221,7 +227,7 @@ Once a way has been created or modified (or added to the set of changes via `cha
 way.nodes.append(node)
 way.nodes.extend([node1, node2, node3])
 way.nodes.insert(3, node)
-way.remove(node)
+way.nodes.remove(node)
 way.nodes.reverse()   # flips the order of the nodes 
 ```
 
@@ -233,7 +239,7 @@ The tags and locations of nodes can be changed directly:
 
 ```python
 way.nodes[2].traffic_calming = "bump"   
-    # turns the node into speed bump 
+    # turns the node into a speed bump 
 way.nodes[5].lat -= .0005 
     # moves the node south
 ```
