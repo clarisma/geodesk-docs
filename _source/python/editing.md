@@ -201,7 +201,23 @@ The feature’s numeric OSM identifier. *Read-only*
 > .property tags
 
 The feature’s tags (as a `dict` of key/value pairs). Setting this attribute to a new `dict` (or list of tuples) replaces all tags.  
- 
+
+> .property x
+
+The x-coordinate of a node (GeoDesk Mercator projection)
+
+> .property y
+
+The y-coordinate of a node (GeoDesk Mercator projection)
+
+> .property lon
+
+The longitude of a node (WGS-84)
+
+> .property lat
+
+The latitude of a node (WGS-84)
+
 > .property original
  
 The original [`Feature`](Feature#Feature), or `None` for a newly created feature. *Read-only*

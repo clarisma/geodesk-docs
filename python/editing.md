@@ -204,6 +204,25 @@ The feature’s numeric OSM identifier. *Read-only*
 
 The feature’s tags (as a `dict` of key/value pairs). Setting this attribute to a new `dict` (or list of tuples) replaces all tags.
 
+</div><h3 id="ChangedFeature_x" class="api"><span class="prefix">ChangedFeature.</span><span class="name">x</span></h3><div class="api" markdown="1">
+
+The x-coordinate of a node (GeoDesk Mercator projection)
+
+</div><h3 id="ChangedFeature_y" class="api"><span class="prefix">ChangedFeature.</span><span class="name">y</span></h3><div class="api" markdown="1">
+
+The y-coordinate of a node (GeoDesk Mercator projection)
+
+</div><h3 id="ChangedFeature_lon" class="api"><span class="prefix">ChangedFeature.</span><span class="name">lon</span></h3><div class="api" markdown="1">
+
+The longitude of a node (WGS-84)
+
+</div><h3 id="ChangedFeature_lat" class="api"><span class="prefix">ChangedFeature.</span><span class="name">lat</span></h3><div class="api" markdown="1">
+
+The latitude of a node (WGS-84)
+
+</div><h3 id="ChangedFeature_lat" class="api"><span class="prefix">ChangedFeature.</span><span class="name">lat</span></h3><div class="api" markdown="1">
+
+
 </div><h3 id="ChangedFeature_original" class="api"><span class="prefix">ChangedFeature.</span><span class="name">original</span></h3><div class="api" markdown="1">
 
 The original [`Feature`](Feature#Feature), or `None` for a newly created feature. *Read-only*
