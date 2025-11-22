@@ -302,10 +302,13 @@ Selects features whose area is no more than *m* square meters.
 Selects features whose distance to *A* is less or equal to *m* meters (measured between the closest points of the candidate feature and *A*).
 
 ```cpp
-Features maxMetersFrom(double, Feature);
 Features maxMetersFrom(double, Coordinate);
 Features maxMetersFromLonLat(double, double, double);
 ```
+
+{%comment%}
+Features maxMetersFrom(double, Feature);
+{%endcomment%}
 
 For example:
 
