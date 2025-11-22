@@ -380,14 +380,16 @@ Features within(GEOSContextHandle_t, const GEOSGeometry*);
 
 These methods return a subset of those features that have a specific topological relationship with another `Feature`.
 
+{% comment %}
 ### connectedTo
 
 Selects all features that have at least one node (vertex) in common with the given `Feature` or `Geometry`.
 
 ```cpp
 Features connectedTo(Feature);
-Features connectedTo(GEOSGeometry);
+Features connectedTo(GEOSContextHandle_t, const GEOSGeometry*);
 ```
+{% endcomment %}
 
 ### nodesOf
 
