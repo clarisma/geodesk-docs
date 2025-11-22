@@ -372,7 +372,7 @@ Selects features that lie entirely **within** *A*:
 
 ```cpp
 Features within(Feature);
-Features within(GEOSGeometry);
+Features within(GEOSContextHandle_t, const GEOSGeometry*);
 ```
 
 
