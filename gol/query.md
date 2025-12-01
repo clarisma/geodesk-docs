@@ -32,7 +32,7 @@ folder). The features must lie fully or partially inside the specified bounding 
 **Interactive mode** supports complex queries using [GeoDesk for Python](../python). 
 
 <blockquote class="note" markdown="1">
-You will need to install Python. On Windows, required Python modules are downloaded automatically; on Linux and macOS, install them manually via `pip install geodesk2`.
+You will need to install Python. On Windows, required Python modules are downloaded automatically; on Linux and macOS, install them manually via `pip install geodesk`.
 </blockquote>
 
 For example:
@@ -129,6 +129,12 @@ For `--format=geojson`, this becomes the [`bbox`](https://datatracker.ietf.org/d
 
 The geometry of the feature (as <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">well-known text</a>).<br>
           Only applies to <code>--format=csv</code>. 
+      </td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>
+          The OSM ID of the feature, prefixed by the type letter (e.g. "N1234")
       </td>
     </tr>
     <tr>
