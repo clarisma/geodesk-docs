@@ -199,7 +199,7 @@ Selects features whose geometry **contains** *A*:
 
 ```cpp
 Features containing(Feature);
-Features containing(GEOSGeometry);
+Features containing(GEOSContextHandle_t, const GEOSGeometry*);
 Features containingXY(Coordinate);
 Features containingLonLat(double, double);
 ```
@@ -217,6 +217,7 @@ return features("a[boundary=administrative][admin_level <= 6]")
     .containingLonLat(-117.25, 32.99); 
 ```
 
+{%comment%}
 ### coveredBy 
 
 Selects features whose geometry is **covered by** *A*:
@@ -225,8 +226,9 @@ Selects features whose geometry is **covered by** *A*:
 
 ```cpp
 Features coveredBy(Feature);
-Features coveredBy(GEOSGeometry);
+Features coveredBy(GEOSContextHandle_t, const GEOSGeometry*);
 ```
+{%endcomment%}
 
 ### crossing
 
@@ -237,7 +239,7 @@ Selects features whose geometry **crosses** *A*:
 
 ```cpp
 Features crossing(Feature);
-Features crossing(GEOSGeometry);
+Features crossing(GEOSContextHandle_t, const GEOSGeometry*);
 ```
 
 For example:
@@ -272,7 +274,7 @@ Selects features whose geometry **intersects** *A*:
 
 ```cpp
 Features intersecting(Feature);
-Features intersecting(GEOSGeometry);
+Features intersecting(GEOSContextHandle_t, const GEOSGeometry*);
 ```
 
 {% comment %}
@@ -300,11 +302,13 @@ Selects features whose area is no more than *m* square meters.
 Selects features whose distance to *A* is less or equal to *m* meters (measured between the closest points of the candidate feature and *A*).
 
 ```cpp
-Features maxMetersFrom(double, Feature);
-Features maxMetersFrom(double, GEOSGeometry);
 Features maxMetersFrom(double, Coordinate);
 Features maxMetersFromLonLat(double, double, double);
 ```
+
+{%comment%}
+Features maxMetersFrom(double, Feature);
+{%endcomment%}
 
 For example:
 
@@ -368,7 +372,7 @@ Selects features that lie entirely **within** *A*:
 
 ```cpp
 Features within(Feature);
-Features within(GEOSGeometry);
+Features within(GEOSContextHandle_t, const GEOSGeometry*);
 ```
 
 
@@ -376,14 +380,16 @@ Features within(GEOSGeometry);
 
 These methods return a subset of those features that have a specific topological relationship with another `Feature`.
 
+{% comment %}
 ### connectedTo
 
 Selects all features that have at least one node (vertex) in common with the given `Feature` or `Geometry`.
 
 ```cpp
 Features connectedTo(Feature);
-Features connectedTo(GEOSGeometry);
+Features connectedTo(GEOSContextHandle_t, const GEOSGeometry*);
 ```
+{% endcomment %}
 
 ### nodesOf
 
