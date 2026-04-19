@@ -93,7 +93,7 @@ The above selects all nodes and areas that have an `amenity` tag whose value is 
 them. For example, this query finds all sushi restaurants that offer takeaway and have a website:
 
 ```css
-na[amenity=restaurant][cusine=sushi][takeaway][website]
+na[amenity=restaurant][cuisine=sushi][takeaway][website]
 ```
 
 Tag clauses may appear in any order.
