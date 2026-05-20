@@ -36,7 +36,7 @@ gol load japan
 loads all tiles from `japan.gob` into `japan.gol` (creating the GOL if it doesn't yet exist).
 
 ```bash
-gol load paris https://download.openplanetdata.com/osm/planet/gob/v2/planet-latest.osm.gob \
+gol load paris https://download.openplanetdata.com/osm/planet/gob/v1/planet-latest.osm.gob \
     -a 2.383,48.807,2.248,48.825,2.235,48.858,2.298,48.903,2.407,48.905,2.426,48.840,2.383,48.807 \
     -C 8
 ```
