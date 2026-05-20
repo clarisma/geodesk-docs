@@ -22,10 +22,16 @@ body
     font-family: Roboto, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", "Helvetica Neue", arial, sans-serif;
 }
 
-nav a, .nav-list .nav-list-item a.nav-list-expander
+nav a, .nav-list .nav-list-item .nav-list-expander
 {
     color: #000;
 }
+
+.nav-list .nav-list-item .nav-list-link:hover, .nav-list .nav-list-item .nav-list-link.active
+{
+    color: #000;
+}
+
 
 .main-content h1:first-of-type
 {
@@ -82,7 +88,7 @@ nav a, .nav-list .nav-list-item a.nav-list-expander
     */
 
 
-code
+code, :not(pre, figure) > code
 {
     background-color: $dark-beige;
     border-radius: 6px;
@@ -321,10 +327,11 @@ div.api
 }
 
 
-div.highlighter-rouge
+div.highlighter-rouge, pre.highlight, div.highlight, div.highlighter-rouge div.highlight
 {
     background-color: $code-background-color;
     border-color: $code-background-color;
+    border-width: 0px;
 }
 
 div.highlight code
