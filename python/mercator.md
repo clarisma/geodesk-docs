@@ -3,7 +3,7 @@ layout: default
 title:  Mercator Projection
 parent: GeoDesk for Python
 description: Converting between WGS-84 (longitude/latitude) and Mercator projection
-nav_order: 11
+nav_order: 10
 ---
 
 

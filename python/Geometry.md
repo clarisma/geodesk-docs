@@ -61,5 +61,6 @@ A Polygon is constructed from a LinearRing, and optionally one or more LinearRin
 
 
 
-Adapted from [Shapely Documentation](https://shapely.readthedocs.io/) --- &copy; 2011 -- 2023 Sean Gillies and Shapely contributors. Licensed under [BSD-3-Clause](https://github.com/shapely/shapely/blob/main/LICENSE.txt)
+Adapted from [Shapely Documentation](https://shapely.readthedocs.io/) --- &copy; 2011 -- 2023 Sean Gillies and Shapely contributors. Licensed under [CC-BY 3.0 US](https://creativecommons.org/licenses/by/3.0/us/)
 {:.text-small}
+

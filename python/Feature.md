@@ -142,9 +142,21 @@ Coordinates are in Mercator projection.
 
 The calculated area (in square meters) if this feature is polygonal, otherwise `0`.
 
+For results in other units, use the [`area()`](functions#geodesk.area) function:
+
+```py
+a = geodesk.area(feature, "square_feet")
+```
+
 </div><h3 id="Feature_length" class="api"><span class="prefix">Feature.</span><span class="name">length</span></h3><div class="api" markdown="1">
 
 The calculated length (in meters) if this feature is lineal, or its circumference if it is polygonal, otherwise `0`.
+
+For results in other units, use the [`length()`](functions#geodesk.length) function:
+
+```py
+l = geodesk.length(feature, "miles")
+```
 
 {% comment %}
 TODO: GeometryCollection?
