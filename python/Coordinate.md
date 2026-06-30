@@ -87,3 +87,12 @@ The coordinate's longitude.
 
 The coordinate's latitude.
 
+</div>
+## Methods
+
+<h3 id="Coordinate_distance" class="api"><span class="prefix">Coordinate.</span><span class="name">distance</span><span class="paren">(</span><i>other</i>, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
+
+Computes the distance between this `Coordinate` and another geometric object (`Geometry`, `Feature`, `Box` or `Coordinate`).
+
+*Since 2.2*
+

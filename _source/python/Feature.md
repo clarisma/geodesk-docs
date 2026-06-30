@@ -186,6 +186,28 @@ route_map.add(route.members("w[highway=cycleway]", color="green")
 route_map.show()
 ```
 
+## Geometric methods
+
+> .method buffer(distance, units='meters')
+ 
+Computes the buffer (a polygonal `Geometry`) of this `Feature`.
+
+`distance` may be negative. A negative buffer may produce an empty geometry.
+
+As an alternative to `distance` and `units`, the buffer distance may also be given as a unit-keyword argument:
+
+```python
+buf = feature.buffer(feet=20)
+```
+
+*Since 2.2*
+
+> .method distance(*other*, units='meters')
+
+Computes the distance between this `Feature` and another geometric object (`Geometry`, `Feature`, `Box` or `Coordinate`).
+
+*Since 2.2*
+
 ## Tag methods
 
 > .method str(*key*)

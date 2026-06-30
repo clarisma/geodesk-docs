@@ -86,3 +86,11 @@ The coordinate's longitude.
 
 The coordinate's latitude.
 
+## Methods
+
+> .method distance(*other*, units='meters')
+
+Computes the distance between this `Coordinate` and another geometric object (`Geometry`, `Feature`, `Box` or `Coordinate`).
+
+*Since 2.2*
+

@@ -52,7 +52,9 @@ Computes the length of a (multi)linestring or polygon perimeter.
 
 </div><h3 id="distance" class="api"><span class="prefix">geodesk.</span><span class="name">distance</span><span class="paren">(</span><i>geom1</i>, <i>geom2</i>, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
-Computes the distance between two `Geometry`, `Feature` or `Coordinate` objects.
+Computes the distance between two `Geometry`, `Feature`, `Box` or `Coordinate` objects.
+
+*Since 2.2*
 
 </div>
 ## Constructive operations
@@ -69,13 +71,13 @@ As an alternative to `distance` and `units`, the buffer distance may also be giv
 buf = buffer(geom, feet=20)
 ```
 
-</div><h3 id="simplify" class="api"><span class="prefix">geodesk.</span><span class="name">simplify</span><span class="paren">(</span><i>geom</i>, tolerance, units=<span class="default">'meters'</span>, preserve_topology=<span class="default">True</span><span class="paren">)</span></h3><div class="api" markdown="1">
+*Since 2.2*
+
+</div><h3 id="simplify" class="api"><span class="prefix">geodesk.</span><span class="name">simplify</span><span class="paren">(</span><i>geom</i>, tolerance, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
 Returns a simplified `Geometry` of an input `Geometry` or `Feature` using the Douglas-Peucker algorithm.
 
 `tolerance`: The maximum allowed geometry displacement. The higher this value, the smaller the number of vertices in the resulting geometry.
-
-`preserve_topology`: By default (`True`), the operation will avoid creating invalid geometries (checking for collapses, ring-intersections, etc), but this is computationally more expensive.
 
 As an alternative to `tolerance` and `units`, the maximum displacement may also be given as a unit-keyword argument:
 

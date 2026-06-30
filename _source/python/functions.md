@@ -52,7 +52,9 @@ Computes the length of a (multi)linestring or polygon perimeter.
 
 > .method distance(*geom1*, *geom2*, units='meters')
 
-Computes the distance between two `Geometry`, `Feature` or `Coordinate` objects.
+Computes the distance between two `Geometry`, `Feature`, `Box` or `Coordinate` objects.
+
+*Since 2.2*
 
 ## Constructive operations
 
@@ -68,13 +70,13 @@ As an alternative to `distance` and `units`, the buffer distance may also be giv
 buf = buffer(geom, feet=20)
 ```
 
-> .method simplify(*geom*, tolerance, units='meters', preserve_topology=True)
+*Since 2.2*
+
+> .method simplify(*geom*, tolerance, units='meters')
  
 Returns a simplified `Geometry` of an input `Geometry` or `Feature` using the Douglas-Peucker algorithm. 
 
 `tolerance`: The maximum allowed geometry displacement. The higher this value, the smaller the number of vertices in the resulting geometry.
-
-`preserve_topology`: By default (`True`), the operation will avoid creating invalid geometries (checking for collapses, ring-intersections, etc), but this is computationally more expensive.
 
 As an alternative to `tolerance` and `units`, the maximum displacement may also be given as a unit-keyword argument:
 

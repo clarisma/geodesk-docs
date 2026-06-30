@@ -189,6 +189,29 @@ route_map.show()
 ```
 
 </div>
+## Geometric methods
+
+<h3 id="Feature_buffer" class="api"><span class="prefix">Feature.</span><span class="name">buffer</span><span class="paren">(</span>distance, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
+
+Computes the buffer (a polygonal `Geometry`) of this `Feature`.
+
+`distance` may be negative. A negative buffer may produce an empty geometry.
+
+As an alternative to `distance` and `units`, the buffer distance may also be given as a unit-keyword argument:
+
+```python
+buf = feature.buffer(feet=20)
+```
+
+*Since 2.2*
+
+</div><h3 id="Feature_distance" class="api"><span class="prefix">Feature.</span><span class="name">distance</span><span class="paren">(</span><i>other</i>, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
+
+Computes the distance between this `Feature` and another geometric object (`Geometry`, `Feature`, `Box` or `Coordinate`).
+
+*Since 2.2*
+
+</div>
 ## Tag methods
 
 <h3 id="Feature_str" class="api"><span class="prefix">Feature.</span><span class="name">str</span><span class="paren">(</span><i>key</i><span class="paren">)</span></h3><div class="api" markdown="1">
