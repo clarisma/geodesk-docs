@@ -100,10 +100,10 @@ The output format of the results:
 `count` | Prints only the *number* of features. 
 `csv` | Comma-separated values
 `geojson` / `geojsonl` | GeoJSON ([traditional](https://geojson.org) / [one feature per line](https://stevage.github.io/ndgeojson/))
-`list` | Simple list of IDs 
-`table` | Simple text-based table
+`list` | Simple list of IDs
+`pbf` | [OSM-PBF](#osm-pbf)
 `wkt` | Well-known text (geometries only)
-`xml` | [OSM-XML](https://wiki.openstreetmap.org/wiki/OSM_XML)
+`xml` | [OSM-XML](#osm-xml)
 
 
 ### `-k`, `--keys` <code><em>&lt;LIST&gt;</em></code> {#option-keys}
@@ -160,7 +160,7 @@ The geometry of the feature (as <a href="https://en.wikipedia.org/wiki/Well-know
 
 If `--keys` is omitted, all tags are included in the output.
 
-`--keys` is ignored for the `count` and `list` formats.
+`--keys` is ignored for the `count`, `list` and `wkt` formats.
 
 
 {% include gol/option-output.md %}
@@ -181,3 +181,16 @@ Applies only to `csv`, `geojson`/`geojsonl` and `wkt`.
 {% include gol/option-quiet.md %}
 {% include gol/option-silent.md %}
 {% include gol/option-verbose.md %}
+
+## Output formats
+
+### OSM PBF
+
+To output results in standard [OSM PBF format](https://wiki.openstreetmap.org/wiki/PBF_Format), the GOL must be built or loaded with option [`--waynode-ids`](build#option-waynode-ids) (`-w`). Without this option, the OSM-PBF file will be created using the `LocationsOnWays` variant, which encodes the longitude and latitude of nodes onto their parent ways, and omits untagged nodes.
+
+*Since 2.3*
+
+### OSM XML
+
+To output results in standard [OSM XML format](https://wiki.openstreetmap.org/wiki/OSM_XML), the GOL must be built or loaded with option [`--waynode-ids`](build#option-waynode-ids) (`-w`). Without this option, untagged nodes are omitted from the resulting XML; instead, their locations are encoded as `lon` and `lat` attributes of `<nd>` elements. 
+
