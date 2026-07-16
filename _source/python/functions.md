@@ -44,11 +44,15 @@ Length units such as `m` or `ft` are also accepted and treated as their area equ
 
 Computes the area of a `Geometry`, `Box` or `Feature`.
 
+*Since 2.2*
+
 > .method length(*geom*, units='meters')
 
 Computes the length of a (multi)linestring or polygon perimeter.
 
 `geom` can be a `Geometry` or `Feature`
+
+*Since 2.2*
 
 > .method distance(*geom1*, *geom2*, units='meters')
 
@@ -64,13 +68,15 @@ Computes the buffer (a polygonal `Geometry`) of a `Geometry`, `Feature`, `Box` o
 
 `distance` may be negative. A negative buffer may produce an empty geometry.
 
-As an alternative to `distance` and `units`, the buffer distance may also be given as a unit-keyword argument:
+Example:
 
 ```python
-buf = buffer(geom, feet=20)
+buf = buffer(geom, 20, 'feet')
 ```
 
 *Since 2.2*
+
+{%comment%}
 
 > .method simplify(*geom*, tolerance, units='meters')
  
@@ -83,6 +89,10 @@ As an alternative to `tolerance` and `units`, the maximum displacement may also 
 ```python
 generalized = simplify(geom, feet=5)
 ```
+
+*Since 2.2*
+
+{%endcomment%}
 
 > .end
 

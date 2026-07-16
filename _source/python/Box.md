@@ -74,6 +74,12 @@ The maximum X coordinate (Mercator-projected). Alias: `right`
 
 The maximum Y coordinate (Mercator-projected). Alias: `top` 
 
+> .property area
+
+The area (in square meters).
+
+*Since 2.2*
+
 > .property centroid
 
 The center [`Coordinate`](#Coordinate).
@@ -130,6 +136,10 @@ if a & b:
 
 Expands this box in all directions by the given distance. Negative values shrink it (which may result in an empty box).
 
+{%comment%}
+
 > .method buffered(*units*=*distance*)
 
 Same as [`buffer()`](#Box.buffer), but returns a copy, leaving this box unmodified.
+
+{%endcomment%}

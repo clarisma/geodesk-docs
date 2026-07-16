@@ -75,6 +75,12 @@ The maximum X coordinate (Mercator-projected). Alias: `right`
 
 The maximum Y coordinate (Mercator-projected). Alias: `top`
 
+</div><h3 id="Box_area" class="api"><span class="prefix">Box.</span><span class="name">area</span></h3><div class="api" markdown="1">
+
+The area (in square meters).
+
+*Since 2.2*
+
 </div><h3 id="Box_centroid" class="api"><span class="prefix">Box.</span><span class="name">centroid</span></h3><div class="api" markdown="1">
 
 The center [`Coordinate`](/python\Coordinate#Coordinate).
@@ -132,6 +138,10 @@ if a & b:
 
 Expands this box in all directions by the given distance. Negative values shrink it (which may result in an empty box).
 
+{%comment%}
+
 </div><h3 id="Box_buffered" class="api"><span class="prefix">Box.</span><span class="name">buffered</span><span class="paren">(</span><i>units</i>=<span class="default">*distance*</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
 Same as [`buffer()`](/python\Box#Box_buffer), but returns a copy, leaving this box unmodified.
+
+{%endcomment%}

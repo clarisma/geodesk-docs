@@ -44,11 +44,15 @@ Length units such as `m` or `ft` are also accepted and treated as their area equ
 
 Computes the area of a `Geometry`, `Box` or `Feature`.
 
+*Since 2.2*
+
 </div><h3 id="length" class="api"><span class="prefix">geodesk.</span><span class="name">length</span><span class="paren">(</span><i>geom</i>, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
 Computes the length of a (multi)linestring or polygon perimeter.
 
 `geom` can be a `Geometry` or `Feature`
+
+*Since 2.2*
 
 </div><h3 id="distance" class="api"><span class="prefix">geodesk.</span><span class="name">distance</span><span class="paren">(</span><i>geom1</i>, <i>geom2</i>, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
@@ -65,13 +69,15 @@ Computes the buffer (a polygonal `Geometry`) of a `Geometry`, `Feature`, `Box` o
 
 `distance` may be negative. A negative buffer may produce an empty geometry.
 
-As an alternative to `distance` and `units`, the buffer distance may also be given as a unit-keyword argument:
+Example:
 
 ```python
-buf = buffer(geom, feet=20)
+buf = buffer(geom, 20, 'feet')
 ```
 
 *Since 2.2*
+
+{%comment%}
 
 </div><h3 id="simplify" class="api"><span class="prefix">geodesk.</span><span class="name">simplify</span><span class="paren">(</span><i>geom</i>, tolerance, units=<span class="default">'meters'</span><span class="paren">)</span></h3><div class="api" markdown="1">
 
@@ -84,6 +90,10 @@ As an alternative to `tolerance` and `units`, the maximum displacement may also 
 ```python
 generalized = simplify(geom, feet=5)
 ```
+
+*Since 2.2*
+
+{%endcomment%}
 
 </div>
 
