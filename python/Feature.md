@@ -197,10 +197,10 @@ Computes the buffer (a polygonal `Geometry`) of this `Feature`.
 
 `distance` may be negative. A negative buffer may produce an empty geometry.
 
-As an alternative to `distance` and `units`, the buffer distance may also be given as a unit-keyword argument:
+Example:
 
 ```python
-buf = feature.buffer(feet=20)
+buf = feature.buffer(20, 'feet')
 ```
 
 *Since 2.2*
