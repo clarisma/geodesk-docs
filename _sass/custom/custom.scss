@@ -375,3 +375,14 @@ div.highlight code
     vertical-align: middle;
     width: 46px;
 }
+
+th
+{
+    text-align: left;
+}
+
+/* Fix to prevent images from being covered by a code sample */
+p:has(> img.float) + .highlighter-rouge {
+    display: flow-root;
+    min-width: 0;
+}
