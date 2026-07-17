@@ -415,6 +415,14 @@ Relations that have the given feature as a member, as well as ways to which the 
 Features parentsOf(Feature);
 ```
 
+### withRole
+
+All relation members with one of the given roles (`roles` can be one or more `const char*` or `std::string_view`, or a collection).
+
+```cpp
+Features withRole(roles);
+```
+
 ## Custom filters
 
 Use `filter()` with your own filter predicate:
