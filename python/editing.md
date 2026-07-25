@@ -220,9 +220,6 @@ The longitude of a node (WGS-84)
 
 The latitude of a node (WGS-84)
 
-</div><h3 id="ChangedFeature_lat" class="api"><span class="prefix">ChangedFeature.</span><span class="name">lat</span></h3><div class="api" markdown="1">
-
-
 </div><h3 id="ChangedFeature_original" class="api"><span class="prefix">ChangedFeature.</span><span class="name">original</span></h3><div class="api" markdown="1">
 
 The original [`Feature`](Feature#Feature), or `None` for a newly created feature. *Read-only*

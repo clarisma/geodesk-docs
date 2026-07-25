@@ -3,7 +3,7 @@ layout: default
 title:  Editing
 parent: GeoDesk for Python
 has_toc: false
-nav_order: 11
+nav_order: 12
 ---
 
 > .module geodesk
