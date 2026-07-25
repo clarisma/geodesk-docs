@@ -8,10 +8,10 @@
   list-style: none;
 
   .nav-list-item {
-    @include fs-4;
-
     position: relative;
     margin: 0;
+
+    @include fs-4;
 
     @include mq(md) {
       @include fs-3;
@@ -23,6 +23,8 @@
       padding-top: $sp-1;
       padding-bottom: $sp-1;
       line-height: #{$nav-list-item-height-sm - 2 * $sp-1};
+      outline-offset: -1px; // Fixes outline clipping on both desktop/mobile "views"
+
       @if $nav-list-expander-right {
         padding-right: $nav-list-item-height-sm;
         padding-left: $gutter-spacing-sm;
@@ -56,6 +58,7 @@
 
       &:hover,
       &.active {
+        color: darken($link-color, 5%);
         background-image: linear-gradient(
           -90deg,
           rgba($feedback-color, 1) 0%,
@@ -73,19 +76,14 @@
 
       width: $nav-list-item-height-sm;
       height: $nav-list-item-height-sm;
-      padding-top: #{$nav-list-item-height-sm / 4};
-      padding-right: #{$nav-list-item-height-sm / 4};
-      padding-bottom: #{$nav-list-item-height-sm / 4};
-      padding-left: #{$nav-list-item-height-sm / 4};
+      padding: #{$nav-list-item-height-sm * 0.25};
       color: $link-color;
+      outline-offset: -1px; // Fixes outline clipping on both desktop/mobile "views"
 
       @include mq(md) {
         width: $nav-list-item-height;
         height: $nav-list-item-height;
-        padding-top: #{$nav-list-item-height / 4};
-        padding-right: #{$nav-list-item-height / 4};
-        padding-bottom: #{$nav-list-item-height / 4};
-        padding-left: #{$nav-list-item-height / 4};
+        padding: #{$nav-list-item-height * 0.25};
       }
 
       &:hover {
@@ -138,10 +136,7 @@
 }
 
 .nav-category {
-  padding-top: $sp-2;
-  padding-right: $gutter-spacing-sm;
-  padding-bottom: $sp-2;
-  padding-left: $gutter-spacing-sm;
+  padding: $sp-2 $gutter-spacing-sm;
   font-weight: 600;
   text-align: start;
   text-transform: uppercase;
@@ -149,8 +144,7 @@
   @include fs-2;
 
   @include mq(md) {
-    padding-right: $gutter-spacing;
-    padding-left: $gutter-spacing;
+    padding: $sp-2 $gutter-spacing;
     margin-top: $gutter-spacing-sm;
     text-align: start;
 

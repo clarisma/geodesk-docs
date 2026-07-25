@@ -23,27 +23,35 @@ url: "https://docs.geodesk.com" # the base hostname & protocol for your site, e.
 permalink: /:title
 markdown: kramdown
 exclude:
- # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
-   - .sass-cache/
-   - .jekyll-cache/
-   - gemfiles/
-   - Gemfile
-   - Gemfile.lock
-   - node_modules/
-   - vendor/bundle/
-   - vendor/cache/
-   - vendor/gems/
-   - vendor/ruby/
- # specific to the theme website:
-   - bin/
-   - lib/
-   - "*.gemspec"
-   - "*.gem"
-   - LICENSE.txt
-   - package.json
-   - package-lock.json
-   - Rakefile
-   - README.md
+  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  # specific to the theme website:
+  - bin/
+  - lib/
+  - "*.gemspec"
+  - "*.gem"
+  - LICENSE.txt
+  - package.json
+  - package-lock.json
+  - Rakefile
+  - README.md
+  - CODE_OF_CONDUCT.md
+  - docker-compose.yml
+  - Dockerfile
+  # theme test code
+  - fixtures/
+  - spec/
+  - tmp
+  - .rspec
 
 # Set a path/url to a logo that will be displayed instead of the title
 #logo: "/assets/images/just-the-docs.png"
@@ -74,9 +82,12 @@ search:
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
   button: false
+  # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
+  focus_shortcut_key: "k"
 
-# To disable support for mermaid diagrams (https://mermaid-js.github.io/mermaid/),
-# comment out the `mermaid` and `version` keys below
+# For copy button on code
+enable_copy_code_button: true
+
 # By default, consuming the theme as a gem leaves mermaid disabled; it is opt-in
 # mermaid:
   # Version of mermaid library
@@ -84,6 +95,12 @@ search:
 #  version: "9.1.6"
   # Put any additional configuration, such as setting the theme, in _includes/mermaid_config.js
   # See also docs/ui-components/code
+  # To load mermaid from a local library, also use the `path` key to specify the location of the library; e.g.
+  # for (v10+):
+  # path: "/assets/js/mermaid.esm.min.mjs"
+  # for (<v10):
+  # path: "/assets/js/mermaid.min.js"
+  # Note: copy both `mermaid.esm.min.mjs` (v10+) or `mermaid.min.js` (<v10) and the associated `.map` file from the specified version of `mermaid/dist` to `/assets/js/`.
 
 # Enable or disable heading anchors
 heading_anchors: true
@@ -96,6 +113,10 @@ aux_links:
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
 
+# Enable or disable the side/mobile menu globally
+# Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
+nav_enabled: true
+
 # Sort order for navigation links
 # nav_sort: case_insensitive # default, equivalent to nil
 nav_sort: case_sensitive # Capital letters sorted before lowercase
@@ -105,6 +126,13 @@ nav_external_links:
 #  - title: Just the Docs on GitHub
 #    url: https://github.com/just-the-docs/just-the-docs
 
+# Show navigation error report
+nav_error_report: true # default is false/nil.
+
+liquid:
+  error_mode: strict
+  strict_filters: true
+
 # Footer content
 # appears at the bottom of every page's main content
 
@@ -112,13 +140,11 @@ nav_external_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2026 GeoDesk &bull; Site design based on <a href='https://github.com/just-the-docs/just-the-docs'>Just the Docs</a>"
+footer_content: "Copyright &copy; 2026 GeoDesk &bull; Site design based on <a href='https://github.com/just-the-docs/just-the-docs'>Just the Docs</a> &bull; Content is available under <a href='https://creativecommons.org/licenses/by-sa/4.0/legalcode.en'>CC-BY-SA 4.0</a> unless otherwise noted."
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
-
-
 
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: false # show or hide edit this page link
@@ -131,7 +157,8 @@ gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into t
 # Color scheme currently only supports "dark", "light"/nil (default), or a custom scheme that you define
 color_scheme: custom
 
-callouts_level: quiet # or loud
+# When commented out, callouts_level defaults to quiet for the light scheme, and loud for dark
+# callouts_level: quiet # or loud
 callouts:
   highlight:
     color: yellow
@@ -155,8 +182,9 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-redirect-from
-
+  - jekyll-github-metadata
+  - jekyll-include-cache
+  - jekyll-sitemap
 
 kramdown:
   syntax_highlighter_opts:
@@ -175,6 +203,9 @@ compress_html:
   # ignore:
   #   envs: all
 
+sass:
+  quiet_deps: true # https://github.com/just-the-docs/just-the-docs/issues/1541
+  silence_deprecations: ['import'] # https://github.com/just-the-docs/just-the-docs/issues/1607
 
 geodesk_version: 2.0.0
 geodesk_python_version: 2.0.0

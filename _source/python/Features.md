@@ -11,15 +11,67 @@ nav_order: 6
 
 # Sets of Features
 
-A **feature set** represents those [`Feature`](#Feature) objects that meet certain criteria.
+`Features` represents a reusable, immutable query over a Geo-Object Library. Filtering it with a bounding box, a tag-matching expression or a spatial constraint produces a new feature set, leaving the original unchanged.
 
-{% comment %}
-// > .method Features(*filename*, *url*=None)
-{% endcomment %}
+[`Feature`](feature) objects are retrieved when the set is iterated or when a result property, such as [`count`](#count), is accessed. A `Features` object is lightweight and does not cache its results. 
+
+If the feature set represents the [nodes of a way](Feature#Feature_nodes) or [members of a relation](Feature#Feature_members), it is ordered and may contain the same `Feature` more than once. All other feature sets are unordered and do not contain duplicates.
+
+```python
+france = Features("france.gol")
+
+paris = Box(west=2.2, south=48.8, east=2.5, north=48.9)
+restaurants = france("na[amenity=restaurant]")(paris)
+
+print(restaurants.count)
+```
+
+## Common operations
+
+<table>
+<thead>
+<th>Task</th><th>Example</th>
+</thead>
+<tr><td>Filter by bounding box</td>
+<td><pre>features(bounds)</pre></td></tr>
+
+<tr><td>Filter by area (Feature or Geometry)</td>
+<td><pre>features(area)</pre></td></tr>
+
+<tr><td>Filter with GOQL</td>
+<td><pre>
+features("n[amenity=cafe]")
+</pre></td></tr>
+
+<tr><td>Apply a spatial filter</td>
+<td><pre>
+features.within(city)
+</pre></td></tr>
+
+<tr><td>Intersect sets</td>
+<td><pre>
+cafes & accessible_places
+</pre></td></tr>
+
+<tr><td>Get any matching feature</td>
+<td><pre>features.first</pre></td></tr>
+	
+<tr><td>Require exactly one feature</td>
+<td><pre>features.one</pre></td></tr>
+
+<tr><td>Count results</td>
+<td><pre>features.count</pre></td></tr>
+
+<tr><td>Display results</td>
+<td><pre>features.map.show()</pre></td></tr>
+	
+</table>
+
+## Constructor
 
 > .method Features(*filename*)
  
-Creates a feature set based on a Geographic Object Library.
+Creates a feature set based on a Geo-Object Library.
 
 ```python
 france = Features("france")   # All features in france.gol
@@ -379,7 +431,7 @@ Features whose area is at most *n* (see `min_area` above).
 
 ```python
 features("a[leisure=pitch][sport=tennis]").max_area(ft=2000)  
-# Tennis courts that are no more than 2000 quare feet
+# Tennis courts that are no more than 2,000 square feet
 ```
 
 > .method min_length(*n*)
@@ -432,6 +484,32 @@ Relations that have the given feature as a member, as well as ways to which the 
 > .method connected_to(*feature*) 
 
 All features that share a common node with *feature*. 
+
+> .method with_role(roles)
+ 
+All relation members with one of the given roles. `roles` can be one or more strings, or an `iterable` with zero or more strings.
+
+If `with_role()` is applied to a feature set that did not originate from [`Feature.members`](Feature#Feature_members), the resulting set contains no features. However, such a set can be applied to a relation by using [`members_of()`](#Features_members_of).
+
+Examples:
+
+```python
+>>> utah = usa("a[boundary=administrative][admin_level=4][name=Utah]").one
+>>> utah.members.with_role("admin_centre").one.name
+'Salt Lake City'
+```
+
+```python
+>>> platforms_and_stops = world.with_role("platform", "stop")
+>>> platforms_and_stops.count
+0
+>>> platforms_and_stops.members_of(train_route).count
+26
+>>> train_route.members.with_role(["platform", "stop"]).count
+26
+```
+
+*Since 2.2*
 
 {%comment%}
 

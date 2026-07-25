@@ -107,5 +107,3 @@ Count the number of entrances of a building:
 ```java
 int numberOfEntrances = building.nodes("[entrance]").size();
 ```
-
-

@@ -273,8 +273,8 @@ GeoDesk enables you to:
 
 - [Full documentation](libraries)
 - [GOL utility](/gol) --- customize and maintain feature libraries 
-- JavaDocs
-- Example code
+- [JavaDocs](https://apidocs.geodesk.com/v2/)
+- [Example code](https://github.com/clarisma/geodesk-examples)
 
 </div>
 

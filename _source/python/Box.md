@@ -13,8 +13,76 @@ nav_order: 3
 A `Box` represents an axis-aligned bounding box.
 
 > .method Box(*coords*)
+ 
+Constructs a `Box` from the given coordinates.
+
+**WGS-84 (longitude & latitude**
+
+- `minlon`/`minlat`/`maxlon`/`maxlat`
+- `west`/`south`/`east`/`north` 
+- `w`/`s`/`e`/`n`
+ 
+**Mercator-projected** 
+
+- `minx`/`miny`/`maxx`/`maxy` 
+- `left`/`bottom`/`right`/`top`
+
+```python
+paris = Box(west=2.2, south=48.8, east=2.5, north=48.9)
+```
+
+> .method Box(*geom*)
+
+Constructs the smallest `Box` that fully encloses the given `Geometry`, `Feature`, `Coordinate` or `Box`.
+
+```python
+bounds  = Box(feature)    # same as feature.bounds
+bounds2 = Box(polygon)    # i.e. the envelope of the Polygon
+```
 
 ## Properties
+
+> .property minlon
+
+The minimum X coordinate (WGS-84). Alias: `west`, `w` 
+
+> .property minlat
+
+The minimum Y coordinate (WGS-84). Alias: `south`, `s`
+
+> .property maxlon
+
+The maximum X coordinate (WGS-84). Alias: `east`, `e`
+
+> .property maxlat
+
+The maximum Y coordinate (WGS-84). Alias: `north`, `n`
+
+> .property minx
+
+The minimum X coordinate (Mercator-projected). Alias: `left` 
+
+> .property miny
+
+The minimum Y coordinate (Mercator-projected). Alias: `bottom` 
+
+> .property maxx
+
+The maximum X coordinate (Mercator-projected). Alias: `right` 
+
+> .property maxy
+
+The maximum Y coordinate (Mercator-projected). Alias: `top` 
+
+> .property area
+
+The area (in square meters).
+
+*Since 2.2*
+
+> .property centroid
+
+The center [`Coordinate`](#Coordinate).
 
 > .property shape
 
@@ -68,6 +136,10 @@ if a & b:
 
 Expands this box in all directions by the given distance. Negative values shrink it (which may result in an empty box).
 
+{%comment%}
+
 > .method buffered(*units*=*distance*)
 
 Same as [`buffer()`](#Box.buffer), but returns a copy, leaving this box unmodified.
+
+{%endcomment%}

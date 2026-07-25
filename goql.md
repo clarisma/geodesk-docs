@@ -124,11 +124,9 @@ String matching is always **case-sensitive**.
 For more sophisticated string matching, use **regular expressions** (using the operator `~` or `!~`):
 
 ```css
-na[name~".[Ee]at."]      
+na[name~".*[0-9].*"]    /* name contains at least one digit */
+                        /* "Route 66", "Terminal 2", etc. */      
 ```
-
-TODO: more RegEx examples
-
 
 A query can contain **multiple selectors**, separated by commas:
 

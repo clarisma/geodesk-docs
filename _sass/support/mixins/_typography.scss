@@ -1,5 +1,12 @@
+// TODO: would be good to consider refactoring these mixins in a way that
+// the & { } selector is not necessary. Note that removing the & { }
+// will trip a SCSS deprecation warning -
+// see https://sass-lang.com/documentation/breaking-changes/mixed-decls/
+// stylelint-disable block-no-redundant-nested-style-rules
 @mixin fs-1 {
-  font-size: $font-size-1 !important;
+  & {
+    font-size: $font-size-1 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-1-sm !important;
@@ -7,7 +14,9 @@
 }
 
 @mixin fs-2 {
-  font-size: $font-size-2 !important;
+  & {
+    font-size: $font-size-2 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-3 !important;
@@ -15,7 +24,9 @@
 }
 
 @mixin fs-3 {
-  font-size: $font-size-3 !important;
+  & {
+    font-size: $font-size-3 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-4 !important;
@@ -23,7 +34,9 @@
 }
 
 @mixin fs-4 {
-  font-size: $font-size-4 !important;
+  & {
+    font-size: $font-size-4 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-5 !important;
@@ -31,7 +44,9 @@
 }
 
 @mixin fs-5 {
-  font-size: $font-size-5 !important;
+  & {
+    font-size: $font-size-5 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-6 !important;
@@ -39,7 +54,9 @@
 }
 
 @mixin fs-6 {
-  font-size: $font-size-6 !important;
+  & {
+    font-size: $font-size-6 !important;
+  }
 
   @include mq(sm) {
     font-size: $font-size-7 !important;
@@ -48,8 +65,10 @@
 }
 
 @mixin fs-7 {
-  font-size: $font-size-7 !important;
-  line-height: $body-heading-line-height;
+  & {
+    font-size: $font-size-7 !important;
+    line-height: $body-heading-line-height;
+  }
 
   @include mq(sm) {
     font-size: $font-size-8 !important;
@@ -57,8 +76,10 @@
 }
 
 @mixin fs-8 {
-  font-size: $font-size-8 !important;
-  line-height: $body-heading-line-height;
+  & {
+    font-size: $font-size-8 !important;
+    line-height: $body-heading-line-height;
+  }
 
   @include mq(sm) {
     font-size: $font-size-9 !important;
@@ -66,8 +87,10 @@
 }
 
 @mixin fs-9 {
-  font-size: $font-size-9 !important;
-  line-height: $body-heading-line-height;
+  & {
+    font-size: $font-size-9 !important;
+    line-height: $body-heading-line-height;
+  }
 
   @include mq(sm) {
     font-size: $font-size-10 !important;
@@ -75,8 +98,10 @@
 }
 
 @mixin fs-10 {
-  font-size: $font-size-10 !important;
-  line-height: $body-heading-line-height;
+  & {
+    font-size: $font-size-10 !important;
+    line-height: $body-heading-line-height;
+  }
 
   @include mq(sm) {
     font-size: $font-size-10-sm !important;

@@ -141,9 +141,21 @@ Coordinates are in Mercator projection.
 
 The calculated area (in square meters) if this feature is polygonal, otherwise `0`.
 
+For results in other units, use the [`area()`](functions#area) function:
+
+```py
+a = geodesk.area(feature, "square_feet") 
+```
+
 > .property length
 
 The calculated length (in meters) if this feature is lineal, or its circumference if it is polygonal, otherwise `0`.
+
+For results in other units, use the [`length()`](functions#length) function:
+
+```py
+l = geodesk.length(feature, "miles") 
+```
 
 {% comment %}
 TODO: GeometryCollection?
@@ -173,6 +185,28 @@ route_map = route.map
 route_map.add(route.members("w[highway=cycleway]", color="green")
 route_map.show()
 ```
+
+## Geometric methods
+
+> .method buffer(distance, units='meters')
+ 
+Computes the buffer (a polygonal `Geometry`) of this `Feature`.
+
+`distance` may be negative. A negative buffer may produce an empty geometry.
+
+Example:
+
+```python
+buf = feature.buffer(20, 'feet')
+```
+
+*Since 2.2*
+
+> .method distance(*other*, units='meters')
+
+Computes the distance between this `Feature` and another geometric object (`Geometry`, `Feature`, `Box` or `Coordinate`).
+
+*Since 2.2*
 
 ## Tag methods
 
