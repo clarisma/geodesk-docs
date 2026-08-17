@@ -178,6 +178,17 @@ The coordinate precision (digits after the decimal point).
 
 Applies only to `csv`, `geojson`/`geojsonl` and `wkt`.
 
+
+### `-R`, `--complete-relations` <code><em>&lt;LIST&gt;</em></code> {#option-complete-relations}
+
+A comma-separated list of relation types, or `all` or `none` (default: `multipolygon`)
+
+ Members (and their descendants) of those relations are included in the output, even if they don't intersect the query area.
+
+Applies only to `pbf` and `xml`.
+
+*Since 2.4*
+
 {% include gol/option-quiet.md %}
 {% include gol/option-silent.md %}
 {% include gol/option-verbose.md %}
