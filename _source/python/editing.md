@@ -255,9 +255,9 @@ The tags and locations of nodes can be changed directly:
 
 ```python
 way.nodes[2].traffic_calming = "bump"   
-    # turns the node into a speed bump 
+    # turns the third node into a speed bump 
 way.nodes[5].lat -= .0005 
-    # moves the node south
+    # moves the 6th node south
 ```
 
 Assigning a `Coordinate` or longitude/latitude tuple to a node changes its location, which affects the geometry of all ways to which this node belongs. To replace the node in the given way, without changing the original node, assign a `Feature` or `ChangedFeature` object instead:
@@ -286,13 +286,16 @@ This script renames a misspelled `highway` key in a given region:
 
 ```python
 from geodesk import Features, Changes
+
 misspelled_key = "hihgway"  
 correct_key = "highway"
 
 world = Features("world.gol")
 region = ...    
 
-fixed = Changes()
+fixed = Changes(
+    f"Change key '{misspelled_key}' to '{correct_key}'"
+    f" in {region.name}")
 for feature in world(region)(f"[{misspelled_key}]"):
     tags = fixed[feature].tags
     tags[correct_key] = tags[misspelled_key]
