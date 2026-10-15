@@ -11,6 +11,8 @@ nav_order: 12
 
 # Editing API
 
+{% include gol/lab.html %}
+
 The **Editing API** prepares batches of changes for updating a local GOL or upload to the global OpenStreetMap database.
 
 <blockquote class="important" markdown="1">
