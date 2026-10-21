@@ -123,16 +123,14 @@ Writes tiles from a Library to a Bundle.
 </td>
 </tr>
 
-<!--
 <tr>
 <td markdown="1">
-[`update`](/gol/update) ~~0.3~~
+[`update`](/gol/update)
 </td>
 <td markdown="1">
-Updates the library.
+Updates the Library from `.osc` files or a replication server.
 </td>
 </tr>
--->
 
 </table>
 
