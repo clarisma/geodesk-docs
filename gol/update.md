@@ -17,7 +17,7 @@ Usage:
 
 If no files or URL is specified, `update` will download changes from the replication server from which this GOL was last successfully updated.
 
-In order to be updatable, a GOL must have been built or loaded with option `--waynode-ids` (`-w).
+In order to be updatable, a GOL must have been built or loaded with option `--waynode-ids` (`-w`).
 
 *Since 2.5*
 
