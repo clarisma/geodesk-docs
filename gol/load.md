@@ -50,7 +50,7 @@ loads the region of metropolitan Paris into `paris.gol` from the given URL, usin
 {% include gol/option-area.md %}
 {% include gol/option-bbox.md %}
 
-### `-C`, `--connections` {#option-connections}
+### `-C`, `--connections` <code><em>&lt;NUMBER&gt;</em></code> {#option-connections}
 
 Value: 1 -- 256 (default: 4)
 
